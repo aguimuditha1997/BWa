@@ -22,8 +22,15 @@ class FamilyMember extends Model
         'relation'
     ];
 
+    public function headOfFamily()
+    {
+        return $this->belongsTo(HeadOfFamily::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+
 }
