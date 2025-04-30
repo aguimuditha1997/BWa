@@ -49,6 +49,12 @@ class User extends Authenticatable
         ];
     }
 
+    public function scopeSearch($quary, $search)
+    {
+        return $quary->where('name','like','%'. $search. '%')
+        ->orWhere('email','like','%'. $search. '%');
+    }
+
     public function headOfFamily()
     {
         return $this->hasOne(HeadOfFamily::class);
@@ -57,5 +63,9 @@ class User extends Authenticatable
     public function FamilyMember()
     {
         return $this->hasOne(FamilyMember::class);
+    }
+    public function development_Applicants()
+    {
+        return $this->hasMany(DevelopmentApplicant::class);
     }
 }
